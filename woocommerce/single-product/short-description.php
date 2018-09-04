@@ -22,15 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
-//$short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt );
+$short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt );
 
-//if ( ! $short_description ) {
-//	return;
-//}
 
 ?>
 <h3 class="colorswitch-red"><?php echo get_field('product_description_excerpt');?></h3>	
-<h3><?php echo get_field('short_description'); // WPCS: XSS ok. ?></h3>
+<h3><?php if ( $short_description ) { $short_description; } ?></h3>
 <p><?php the_content();?></p>
 <ul class="clearfix">
 <li>
